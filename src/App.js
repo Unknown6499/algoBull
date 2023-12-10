@@ -3,10 +3,9 @@ import Register from './pages/register/Register';
 import NavBar from './components/navbar/NavBar'
 import LeftBar from './components/leftbar/LeftBar'
 import RightBar from './components/rightbar/RightBar';
-import Home from './pages/home/Home';
+import Home, {loader as homeLoader, action as newPostAction}from './pages/home/Home';
 import Profile from './pages/profile/Profile';
 import { action as userLoginAction } from './pages/login/Login';
-import {action as newPostAction} from './pages/home/Home'
 import './App.css'
 import {
   createBrowserRouter,
@@ -14,14 +13,13 @@ import {
   Outlet,
   RouterProvider,
 } from "react-router-dom";
-import Likes from './pages/likes/Likes';
-import Posts from './pages/posts/Posts';
-import Bookmarks from './pages/bookmarks/Bookmarks';
+import Likes, {loader as likesLoader} from './pages/likes/Likes';
+import Posts, {loader as postsLoader} from './pages/posts/Posts';
+import Bookmarks,{loader as bookmarksLoader} from './pages/bookmarks/Bookmarks';
 import { useContext,} from 'react';
 import { LoginContext } from './context/LoginContext';
 function App() {
   const {currentUser} = useContext(LoginContext)
-  
     const ProtectedRoute = ({children})=>{
       if(!currentUser){
          return <Navigate to='/login'/>
@@ -50,18 +48,22 @@ function App() {
         path:'/',
         element:<Home/>,
         action: newPostAction,
+        loader: homeLoader,
       },
       {
         path:'/likes',
-        element:<Likes/>
+        element:<Likes/>,
+        loader:likesLoader,
       },
       {
         path:'/posts',
-        element:<Posts/>
+        element:<Posts/>,
+        loader:postsLoader,
       },
       {
         path:'/bookmarks',
-        element:<Bookmarks/>
+        element:<Bookmarks/>,
+        loader:bookmarksLoader
       },
       {
         path:'/profile',

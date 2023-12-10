@@ -15,10 +15,10 @@ function Register() {
         <div className="right">
           <h1>Register</h1>
           <form>
-            <input type="text" placeholder="username"/>
-            <input type="password" placeholder="password"/>
-            <input type="email" placeholder="Email"/>
-            <input type="text" placeholder="Name"/>
+            <input type="text" name='username'placeholder="username"/>
+            <input type="password" name='password' placeholder="password"/>
+            <input type="email" name='email' placeholder="Email"/>
+            <input type="text" name='name' placeholder="Name"/>
             <button>Register</button>
           </form>
         </div>

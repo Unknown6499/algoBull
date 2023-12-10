@@ -1,25 +1,27 @@
 import React from 'react';
 import { Table, Space, Popconfirm, Button, Input, Form } from 'antd';
+import { useLoaderData } from 'react-router-dom';
 
 const Posts = () => {
   // Placeholder data for posts
-  const posts = [
-    {
-      id: 1,
-      content: 'This is my first post.',
-      comments: [
-        { id: 101, text: 'Great post!' },
-        { id: 102, text: 'Looking forward to more.' },
-      ],
-    },
-    {
-      id: 2,
-      content: 'Another post here.',
-      comments: [
-        { id: 201, text: 'Nice content!' },
-      ],
-    },
-  ];
+  const posts = useLoaderData()
+  // [
+  //   {
+  //     id: 1,
+  //     content: 'This is my first post.',
+  //     comments: [
+  //       { id: 101, text: 'Great post!' },
+  //       { id: 102, text: 'Looking forward to more.' },
+  //     ],
+  //   },
+  //   {
+  //     id: 2,
+  //     content: 'Another post here.',
+  //     comments: [
+  //       { id: 201, text: 'Nice content!' },
+  //     ],
+  //   },
+  // ];
 
   const columns = [
     {
@@ -73,7 +75,7 @@ const Posts = () => {
             <Space direction="vertical">
               <Form layout="vertical">
                 <Form.Item label="Add Comment">
-                  <Input placeholder="Type your comment" />
+                  <Input placeholder="Type your comment" name='comment'/>
                 </Form.Item>
                 <Form.Item>
                   <Button type="primary">Add Comment</Button>
@@ -88,3 +90,30 @@ const Posts = () => {
 };
 
 export default Posts;
+
+
+export async function loader(){
+  try {
+    const response = await fetch('https://react-http-2faf5-default-rtdb.firebaseio.com/post.json');
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch data from Firebase');
+    }
+    const data = await response.json();
+    const dummy_data =[]
+    for(const key in data){
+      dummy_data.push({
+        postId: key,
+        content:data[key].content,
+        comments:data[key].comments,
+      })
+    }
+    console.log(dummy_data)
+    return dummy_data;
+    // Handle the data as needed
+  } catch (error) {
+    console.error('Error fetching data from Firebase:', error.message);
+  }
+  return null;
+}
+

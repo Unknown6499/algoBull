@@ -3,7 +3,6 @@ import { HeartOutlined, HeartFilled, BookOutlined, BookFilled, CommentOutlined, 
 import { Card } from 'antd';
 
 const Post = ({ postId, username, initialLikeStatus, initialBookmarkStatus, onLikeToggle, onBookmarkToggle, timestamp,content,comments }) => {
-
   const [showComments, setShowComments] = useState(false);
 
   const toggleComments = () => {
@@ -18,7 +17,7 @@ function convertDateToMinutes(date) {
 
   return totalMinutes;
 }
-const totalMinutes = Math.floor(new Date().getTime() /(1000*60)) -convertDateToMinutes(timestamp); // Convert timestamp to a readable format
+const totalMinutes = Math.floor(new Date().getTime() /(1000*60)) -convertDateToMinutes(new Date(Date.parse(timestamp))); // Convert timestamp to a readable format
 const formattedTimestamp= totalMinutes >= 518400
     ? `${Math.floor(totalMinutes / 518400)} year`
     : totalMinutes >= 43200
@@ -43,7 +42,7 @@ const formattedTimestamp= totalMinutes >= 518400
       <button onClick={() => onLikeToggle(postId, !initialLikeStatus)} style={{backgroundColor:'transparent', border:'none', margin:'0.5em'}}>
         {initialLikeStatus ? <HeartFilled style={{height:'2rem',}}/> : <HeartOutlined style={{height:'2rem', }}/>}2 Likes 
       </button>
-      <button onClick={() => onBookmarkToggle(postId, !initialBookmarkStatus)} style={{backgroundColor:'transparent', border:'none',margin:'0.5em'}}x>
+      <button onClick={() => onBookmarkToggle(postId, !initialBookmarkStatus)} style={{backgroundColor:'transparent', border:'none',margin:'0.5em'}}>
         {initialBookmarkStatus ? <BookFilled style={{height:'2rem',}}/> : <BookOutlined style={{height:'2rem',}}/>} Bookmark
       </button >
       <button onClick={toggleComments} style={{backgroundColor:'transparent', border:'none',margin:'0.5em'}}><CommentOutlined/> Comments</button>

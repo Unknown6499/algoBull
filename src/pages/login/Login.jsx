@@ -1,6 +1,6 @@
 import { Form, Link,  redirect,  useNavigate } from 'react-router-dom'
 import './Login.scss'
-import { useContext, useState } from 'react'
+import { useContext, useState,useEffect } from 'react'
 import { LoginContext } from '../../context/LoginContext'
 function Login() {
   const [userName, setUserName] = useState('')
@@ -10,14 +10,15 @@ function Login() {
   const loginButton = userName.length>7 && password.length> 7;
   const loginHandler = async (e) =>{
     e.preventDefault();
-    //setting login state to true
-   setCurrentUser(()=> true );
-   //checking if login state is true if true than to homepage if not then to login page
-   if(currentUser){
-        return   navigate('/')}
-    
-    return null;
+    setCurrentUser((prevState)=> { return prevState?prevState:!prevState});
   }
+  useEffect(() => {
+    if (currentUser) {
+      navigate('/');
+    }
+  }, [currentUser, navigate]);
+
+  
   return (
     <div className="login">
       <div className="card">

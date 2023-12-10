@@ -12,160 +12,74 @@ export const users = {
     ],
   }
   
-export const DUMMY_POST = [
-  {
-    postId: 1,
-    likeStatus: false,
-    username: "Nirmal Kumar",
-    bookmarkStatus: false,
-    timestamp: new Date(2023, 11, 2, 18, 30, 0, 0),
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-   comments : [
-  {
-    id: 1,
-    user: 'Alice',
-    text: 'Great post!',
-  },
-  {
-    id: 2,
-    user: 'Bob',
-    text: 'I agree, fantastic content!',
-  },
-  {
-    id: 3,
-    user: 'Charlie',
-    text: 'Looking forward to more posts from you!',
-  },
-]
+ export const handleLikeToggle =async (postId, newLikestatus) => {
+    try {
+      // Step 1: Fetch existing data
+      const response = await fetch(`https://react-http-2faf5-default-rtdb.firebaseio.com/post/${postId}.json`);
+  
+      if (!response.ok) {
+        throw new Error('Failed to fetch existing data from Firebase');
+      }
+  
+      const existingData = await response.json();
+  
+      // Step 2: Edit the data (replace with your specific logic)
+      const updatedData = {
+        ...existingData,
+        likeStatus:newLikestatus,
+      };
+  
+      // Step 3: Submit the edited data back to Firebase
+      const updateResponse = await fetch(`https://react-http-2faf5-default-rtdb.firebaseio.com/post/${postId}.json`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedData),
+      });
+  
+      if (!updateResponse.ok) {
+        throw new Error('Failed to update data in Firebase');
+      }
+  
+      console.log('Data successfully updated in Firebase:', updatedData);
+    } catch (error) {
+      console.error('Error updating data in Firebase:', error.message);
+    }
+};
 
-  },
-  {
-    postId: 2,
-    likeStatus: true,
-    bookmarkStatus: true,
-    username: "Agyaat Kumar",
-    timestamp: new Date(),
-    content: "this is a dummy post to test this all",
-   comments : [
-  {
-    id: 1,
-    user: 'Alice',
-    text: 'Great post!',
-  },
-  {
-    id: 2,
-    user: 'Bob',
-    text: 'I agree, fantastic content!',
-  },
-  {
-    id: 3,
-    user: 'Charlie',
-    text: 'Looking forward to more posts from you!',
-  },
-]
+export const handleBookmarkToggle = async (postId, newBookmarkStatus) => {
+try {
+  // Step 1: Fetch existing data
+  const response = await fetch(`https://react-http-2faf5-default-rtdb.firebaseio.com/post/${postId}.json`);
 
+  if (!response.ok) {
+    throw new Error('Failed to fetch existing data from Firebase');
+  }
 
-  },
-  {
-    postId: 3,
-    likeStatus: false,
-    username: "Nirmal Kumar",
-    bookmarkStatus: false,
-    timestamp: new Date(2023, 11, 2, 18, 30, 0, 0),
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-   comments : [
-  {
-    id: 1,
-    user: 'Alice',
-    text: 'Great post!',
-  },
-  {
-    id: 2,
-    user: 'Bob',
-    text: 'I agree, fantastic content!',
-  },
-  {
-    id: 3,
-    user: 'Charlie',
-    text: 'Looking forward to more posts from you!',
-  },
-]
+  const existingData = await response.json();
 
-  },
-  {
-    postId: 4,
-    likeStatus: true,
-    bookmarkStatus: true,
-    username: "Agyaat Kumar",
-    timestamp: new Date(),
-    content: "this is a dummy post to test this all",
-   comments : [
-  {
-    id: 1,
-    user: 'Alice',
-    text: 'Great post!',
-  },
-  {
-    id: 2,
-    user: 'Bob',
-    text: 'I agree, fantastic content!',
-  },
-  {
-    id: 3,
-    user: 'Charlie',
-    text: 'Looking forward to more posts from you!',
-  },
-]
-  },
-  {
-    postId: 5,
-    likeStatus: false,
-    username: "Nirmal Kumar",
-    bookmarkStatus: false,
-    timestamp: new Date(2023, 11, 2, 18, 30, 0, 0),
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-   comments : [
-  {
-    id: 1,
-    user: 'Alice',
-    text: 'Great post!',
-  },
-  {
-    id: 2,
-    user: 'Bob',
-    text: 'I agree, fantastic content!',
-  },
-  {
-    id: 3,
-    user: 'Charlie',
-    text: 'Looking forward to more posts from you!',
-  },
-]
+  // Step 2: Edit the data (replace with your specific logic)
+  const updatedData = {
+    ...existingData,
+    bookmarkStatus:newBookmarkStatus,
+  };
 
-  },
-  {
-    postId: 6,
-    likeStatus: true,
-    bookmarkStatus: false,
-    username: "Agyaat Kumar",
-    timestamp: new Date(),
-    content: "this is a dummy post to test this all",
-    comments : [
-      {
-        id: 1,
-        user: 'Alice',
-        text: 'Great post!',
-      },
-      {
-        id: 2,
-        user: 'Bob',
-        text: 'I agree, fantastic content!',
-      },
-      {
-        id: 3,
-        user: 'Charlie',
-        text: 'Looking forward to more posts from you!',
-      },
-    ]
-  },
-];
+  // Step 3: Submit the edited data back to Firebase
+  const updateResponse = await fetch(`https://react-http-2faf5-default-rtdb.firebaseio.com/post/${postId}.json`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(updatedData),
+  });
+
+  if (!updateResponse.ok) {
+    throw new Error('Failed to update data in Firebase');
+  }
+
+  console.log('Data successfully updated in Firebase:', updatedData);
+} catch (error) {
+  console.error('Error updating data in Firebase:', error.message);
+}
+};
