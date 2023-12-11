@@ -25,7 +25,7 @@ function RightBar() {
           <div className="user">
             <div className="userinfo">
               <img src="https://media.istockphoto.com/id/1203745533/vector/social-media-icons-mosaic-background-with-call-to-action.jpg?s=612x612&w=0&k=20&c=W-ho2NIZv2cn12BNlixRSdPIa_9OJgCJ-RODdl-aCjw=" alt="" />
-              <span>unknown kumar changed their profile picture</span>
+              <span>Agyaat kumar changed their profile picture</span>
             </div>
           </div></Card>
         </div>
@@ -37,7 +37,7 @@ function RightBar() {
 
               <img src="https://media.istockphoto.com/id/1203745533/vector/social-media-icons-mosaic-background-with-call-to-action.jpg?s=612x612&w=0&k=20&c=W-ho2NIZv2cn12BNlixRSdPIa_9OJgCJ-RODdl-aCjw=" alt="" />
               <div className="online"/>
-              <span>unknown kumar</span>
+              <span>Random kumar</span>
             </div>
           </div>
           <div className="user">
@@ -45,7 +45,7 @@ function RightBar() {
 
               <img src="https://media.istockphoto.com/id/1203745533/vector/social-media-icons-mosaic-background-with-call-to-action.jpg?s=612x612&w=0&k=20&c=W-ho2NIZv2cn12BNlixRSdPIa_9OJgCJ-RODdl-aCjw=" alt="" />
               <div className="online"/>
-              <span>unknown kumar</span>
+              <span>Another kumar</span>
             </div>
           </div>
           <div className="user">
@@ -53,7 +53,7 @@ function RightBar() {
 
               <img src="https://media.istockphoto.com/id/1203745533/vector/social-media-icons-mosaic-background-with-call-to-action.jpg?s=612x612&w=0&k=20&c=W-ho2NIZv2cn12BNlixRSdPIa_9OJgCJ-RODdl-aCjw=" alt="" />
               <div className="online"/>
-              <span>unknown kumar</span>
+              <span>Alice</span>
             </div>
           </div>
           </Card>
