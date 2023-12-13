@@ -1,10 +1,12 @@
 import React,{useState} from 'react';
 import { HeartOutlined, HeartFilled, BookOutlined, BookFilled, CommentOutlined,  } from '@ant-design/icons';
-import { Card } from 'antd';
-
+import {users} from '../../utility/utility';
+import { Card,Input } from 'antd';
+import { commentHandler } from '../../utility/utility';
 const Post = ({ postId, username, initialLikeStatus, initialBookmarkStatus, onLikeToggle, onBookmarkToggle, timestamp,content,comments }) => {
   const [showComments, setShowComments] = useState(false);
-
+  const [userComment,setComment] = useState('')
+ 
   const toggleComments = () => {
     setShowComments(!showComments);
   };
@@ -33,9 +35,9 @@ const formattedTimestamp= totalMinutes >= 518400
         <div className="user">
             <div className="userinfo">
 
-              <img src="https://media.istockphoto.com/id/1203745533/vector/social-media-icons-mosaic-background-with-call-to-action.jpg?s=612x612&w=0&k=20&c=W-ho2NIZv2cn12BNlixRSdPIa_9OJgCJ-RODdl-aCjw=" alt="" />
+              <img src={users.profilePicture} alt="" />
              
-              <span>{username}</span><p>posted {formattedTimestamp}s ago</p>
+              <span>{users.fullName}</span><p>posted {formattedTimestamp}s ago</p>
             </div>
           </div>
       <p>{content}</p>
@@ -48,6 +50,23 @@ const formattedTimestamp= totalMinutes >= 518400
       <button onClick={toggleComments} style={{backgroundColor:'transparent', border:'none',margin:'0.5em'}}><CommentOutlined/> Comments</button>
       {showComments && (
         <div>
+          <div> 
+   
+      <Card style={{marginBottom:'1rem'}}
+      title="Comment Here"
+      extra={
+        <button type="submit"  disabled={!userComment.trim()} onClick={() =>{commentHandler(postId, userComment)}}>
+          Post
+        </button>
+      }>
+        <Input.TextArea
+          placeholder="Write your comment here"
+          value={userComment}
+          name='comment'
+          onChange={(e) => setComment(e.target.value)}
+        />
+    </Card>
+  </div>
           <h3>Comments:</h3>
           {comments.map((comment) => (<>
             <div className="user">

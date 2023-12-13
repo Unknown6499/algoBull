@@ -1,4 +1,5 @@
 import './NavBar.scss'
+import {users} from '../../utility/utility'
 import { Link } from 'react-router-dom';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
@@ -34,8 +35,8 @@ function NavBar() {
         <EmailOutlinedIcon/>
         <NotificationsOutlinedIcon/>
         <div className='user'>
-          <img src="https://media.istockphoto.com/id/1203745533/vector/social-media-icons-mosaic-background-with-call-to-action.jpg?s=612x612&w=0&k=20&c=W-ho2NIZv2cn12BNlixRSdPIa_9OJgCJ-RODdl-aCjw=" alt='user avtar'/>
-          <span>Nirmal kumar</span>
+          <img src={users.profilePicture} alt='user avtar'/>
+          <span>{users.fullName}</span>
         </div>
         <button onClick={(e) => logOutHandler(e)}>Logout</button>
       </div>
