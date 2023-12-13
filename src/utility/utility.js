@@ -94,7 +94,6 @@ export const commentHandler = async (postId, comment)=>{
     }
 
     const existingData = await response.json();
-    const commentId =existingData.length;
     const commentData = {id:Math.random()*1000,
     text:comment,
   user:'Nirmal Kumar'}
