@@ -1,7 +1,8 @@
 import { users } from "../../utility/utility";
 import './Profile.scss'
-import {useState} from 'react';
-import {Link} from 'react-router-dom'
+import React,{useState} from "react";
+ import {Link} from 'react-router-dom'
+
 function Profile(){
 
   
@@ -52,7 +53,7 @@ function Profile(){
        <div className="user">
             <div className="userinfo">
          
-              <img src={editingPicture ? newProfilePicture : users.profilePicture} alt="" />
+              <img src={editingPicture ? newProfilePicture : users.profilePicture} alt="user profile picture" />
             </div>
             {editingPicture ? (
         <div>
