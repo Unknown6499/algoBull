@@ -84,40 +84,8 @@ console.error('Error updating data in Firebase:', error.message);
 }
 };
 
-export const commentHandler = async (postId, comment)=>{
-   try {
-    // Step 1: Fetch existing data
-    const response = await fetch(`https://react-http-2faf5-default-rtdb.firebaseio.com/post/${postId}/comments.json`);
-
-    if (!response.ok) {
-      throw new Error('Failed to fetch existing data from Firebase');
-    }
-
-    const existingData = await response.json();
-    const commentData = {id:Math.random()*1000,
-    text:comment,
-  user:'Nirmal Kumar'}
-    // Step 2: Edit the data (replace with your specific logic)
-    const updatedData = {
-      ...existingData,
-    commentId:commentData,
-    };
-      
-    // Step 3: Submit the edited data back to Firebase
-    const updateResponse = await fetch(`https://react-http-2faf5-default-rtdb.firebaseio.com/post/${postId}/comments.json`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(updatedData),
-    });
-
-    if (!updateResponse.ok) {
-      throw new Error('Failed to update data in Firebase');
-    }
-
-    console.log('Data successfully updated in Firebase:', updatedData);
-  } catch (error) {
-    console.error('Error updating data in Firebase:', error.message);
-  }
+  
+export const commentHandler = (postId, comment)=>{
+  console.log(`this is the post ID  ${postId} and this is your comment:- ${comment}`)
 }
+
