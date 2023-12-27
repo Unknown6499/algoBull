@@ -1,15 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
+import store from './context'
 
 import App from './App';
-import { LoginContextProvider } from './context/LoginContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <LoginContextProvider>
+    <Provider store={store}>
     <App />
-    </LoginContextProvider>
+    </Provider>
   </React.StrictMode>
 );
 

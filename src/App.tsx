@@ -12,34 +12,40 @@ import {
   Navigate,
   Outlet,
   RouterProvider,
+
 } from "react-router-dom";
 import Likes, {loader as likesLoader} from './pages/likes/Likes';
 import Posts, {loader as postsLoader} from './pages/posts/Posts';
 import Bookmarks,{loader as bookmarksLoader} from './pages/bookmarks/Bookmarks';
-import { useContext,} from 'react';
-import { LoginContext } from './context/LoginContext';
-function App() {
-  const {currentUser} = useContext(LoginContext)
-    const ProtectedRoute = ({children})=>{
+import {useSelector} from 'react-redux';
+import React from 'react';
+
+
+const App:React.FC=(props)=> {
+ 
+  const currentUser = useSelector((state:{currentUser:boolean}) => state.currentUser)
+ 
+    const ProtectedRoute = (props: React.PropsWithChildren<{}>)=>{
       if(!currentUser){
          return <Navigate to='/login'/>
 
       }
-      return children
+      return <>{props.children}</>;
     }
-  const Layout =() =>{
+   
+  const Layout:React.FC =(props:React.PropsWithChildren<{}>) =>{
   return <div>
     <NavBar/>
     <div style={{display:'flex'}}>
       <LeftBar/>
       <div style={{flex:'6'}}>
-      <Outlet/>
+      {<Outlet/> || props.children}
       </div>
       <RightBar/>
     </div>
   </div>
   }
-  const router = createBrowserRouter([
+  const routes =[
     {
     path:'/',
     element: <ProtectedRoute><Layout/></ProtectedRoute>,
@@ -80,8 +86,9 @@ function App() {
   {path:'/register',
 element:<Register/>,
 }
-]);
-  return <RouterProvider router={router}/>
+]
+  const router = createBrowserRouter(routes);
+  return <div><RouterProvider router={router}/></div>
 }
 
 export default App;
