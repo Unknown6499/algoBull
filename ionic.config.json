@@ -1,0 +1,7 @@
+{
+  "name": "algo-bull-typescript",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "custom"
+}

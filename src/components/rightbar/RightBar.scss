@@ -4,7 +4,9 @@
     top:70px;
     height: calc(100vh - 70px);
     overflow: scroll;
-    
+    @media (max-width:480px){
+        display: none;
+    }
 
     &::-webkit-scrollbar{
         display: none;

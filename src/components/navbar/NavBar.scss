@@ -9,14 +9,25 @@
     top: 0;
     background-color: white;
     z-index: 999;
+    @media (max-width:480px){
+        width: 100vw;
+    }
     .left{
         display: flex;
         align-items: center;
         gap:30px;
+        @media (max-width:480px){
+            .mobileview{
+                    display: none;
+                }
+        }
         span{
             font-weight: bold;
             font-size: 20px;
-            color:orange
+            color:orange;
+            @media (max-width:480px){
+                display: none;
+            }
         }
         .search{
             display: flex;
@@ -28,6 +39,9 @@
             input{
                 border: none;
                 width: 500px;
+                @media (max-width:480px){
+                    display: none;
+                }
             }
         }
     }
@@ -35,6 +49,11 @@
         display: flex;
             align-items: center; 
             gap: 30px;
+            @media (max-width:480px){
+                
+                .mobileview{
+                        display: none;
+                    }}
         .user{
             display: flex;
             align-items: center; 

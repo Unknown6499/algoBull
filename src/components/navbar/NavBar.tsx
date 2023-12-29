@@ -21,18 +21,19 @@ dispatch({type:'false', value:false});
         <Link to='/'style={{textDecoration:'none'}} >
         <span >Orange</span>
         </Link>
-        <HomeOutlinedIcon/>
-        <DarkModeOutlinedIcon/>
-        <GridViewOutlinedIcon/>
+        <Link to='/'style={{textDecoration:'none'}} >
+        <HomeOutlinedIcon/></Link>
+        <DarkModeOutlinedIcon  className='mobileview'/>
+        <GridViewOutlinedIcon  className='mobileview'/>
         <div className='search'>
           <SearchOutlinedIcon/>
           <input type='text' placeholder='search here'/>
         </div>
       </div>
       <div className='right'>
-        <PersonOutlineOutlinedIcon/>
-        <EmailOutlinedIcon/>
-        <NotificationsOutlinedIcon/>
+        <PersonOutlineOutlinedIcon  className='mobileview'/>
+        <EmailOutlinedIcon  className='mobileview'/>
+        <NotificationsOutlinedIcon  className='mobileview'/>
         <div className='user'>
           <img src="https://media.istockphoto.com/id/1203745533/vector/social-media-icons-mosaic-background-with-call-to-action.jpg?s=612x612&w=0&k=20&c=W-ho2NIZv2cn12BNlixRSdPIa_9OJgCJ-RODdl-aCjw=" alt='user avtar'/>
           <span>Nirmal kumar</span>
